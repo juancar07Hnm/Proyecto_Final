@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMR Tech - Contacto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/contacto.css">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+<body>
+    <header class="mi_header_peque">
+        <nav class="mi_menu mi_contenedor">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.svg" alt="logo"></a>
+            </div>
+            <nav class="menu_nav">
+                <a href="index.html">Inicio</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </nav>
+    </header>
+
+    <main class="mi_contenedor">
+        <h2 class="titulo_servicios">¿Tienes algún <span class="coral">problema</span> técnico?</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Rellena este formulario y te ayudaremos lo antes posible.</p>
+
+        <form id="formulario_contacto" action="" method="GET" class="caja-contacto">
+            
+            <label for="nombre">Nombre y Apellidos:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required autofocus>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="provincia">¿Dónde estás?</label>
+            <select id="provincia" name="provincia">
+                <option value="sevilla" selected>Sevilla</option>
+                <option value="cordoba">Córdoba</option>
+                <option value="huelva">Huelva</option>
+                <option value="cadiz">Cádiz</option>
+            </select>
+
+            <p class="etiqueta-form">¿Qué servicio necesitas?</p>
+            <div class="opciones-check">
+                <input type="checkbox" id="check1" name="servicio" value="1">
+                <label for="check1" class="label-inline">Montaje de PC</label>
+                <input type="checkbox" id="check2" name="servicio" value="1">
+                <label for="check2" class="label-inline">Limpieza de Virus</label>
+            </div>
+
+            <p class="etiqueta-form">Nivel de urgencia:</p>
+            <div class="opciones-radio">
+                <input type="radio" id="radio1" name="urgencia" value="B">
+                <label for="radio1" class="label-inline">Normal</label>
+                <input type="radio" id="radio2" name="urgencia" value="A">
+                <label for="radio2" class="label-inline">Urgente</label>
+            </div>
+
+            <div class="botones">
+                <button type="submit" class="cta">ENVIAR CONSULTA</button>
+                <button type="reset" class="btn-borrar">LIMPIAR</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Juan Carlos Marquez Gomez - SMR Medina Azahara</p>
+    </footer>
+
+    <script src="js/validacion.js"></script>
+</body>
+</html>

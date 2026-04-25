@@ -1,0 +1,141 @@
+/* --- ESTILOS DEL MENÚ CON FONDO AMARILLO --- */
+
+body {
+    font-family: Arial, sans-serif; /* La fuente normalita que usamos en clase */
+}
+
+.menu_nav {
+    display: flex; 
+    gap: 25px; /* Separación entre los enlaces del menú [cite: 11] */
+    background-color:#cad660; /* Amarillo de verdad */
+    padding: 10px 20px;
+    border-radius: 8px; /* Bordes un poco redondeados  */
+}
+
+/* Definimos la animación */
+@keyframes aparecerMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu_nav a {
+    text-decoration: none;
+    color: #333; /* Color oscuro para que se lea sobre el amarillo */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    animation: aparecerMenu 1s ease-out forwards;
+    /* Esto hace que los enlaces entren en cascada */
+}
+
+/* --- CABECERA DE PÁGINAS SECUNDARIAS --- */
+
+.mi_header_peque {
+    background-color: #333130; /* Fondo oscuro para que el logo blanco se vea */
+    padding: 10px 0;
+}
+
+/* --- REJILLA DE SERVICIOS (GRID) --- */
+
+.grid_servicios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales como vimos en clase  */
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+/* --- ESTILO DE LAS TARJETAS --- */
+
+.caja_servicio {
+    height: 380px; /* Un poco más de altura para que quepan las fotos */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    transition: 0.3s; /* Para que los efectos sean suaves  */
+}
+
+.tarjeta-cristal {
+    /* Uso el blanco transparente que vimos en clase [cite: 485] */
+    background-color: #cad660; 
+    border: 1px solid #ddd;
+    color: #000000;
+    padding: 30px 20px; /* Más espacio arriba y abajo */
+    text-align: center;
+    
+    /* Flexbox para separar el texto de la foto [cite: 897, 1047-1049] */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* El texto arriba y la foto abajo del todo */
+}
+
+/* Para que la foto de la tarjeta sea más grande */
+.img-grande {
+    width: 90%; /* Que use todo el ancho que pueda */
+    max-width: 400px; /* Pero que no pase de 400px para que no rompa la caja */
+    height: auto;
+    margin-top: 15px; /* Separación con el texto de arriba */
+    border-radius: 8px; /* Esquinas redondeadas como la Actividad 2 [cite: 483] */
+}
+
+.tarjeta-fondo {
+    position: relative; /* Necesario para que la imagen no se escape de la tarjeta */
+    border: none;
+    background-color: black; /* Por si la imagen tarda en cargar, que no se vea blanco */
+}
+
+/* Esto es lo que hace que la imagen del HTML se porte como un fondo */
+.foto-fondo {
+    position: absolute; /* La fijamos a la tarjeta */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto es clave: hace que la imagen grande se adapte sin deformarse */
+    z-index: 1; /* La ponemos al fondo */
+}
+
+/* La capa oscura ahora tiene que estar por encima de la foto */
+.capa-oscura {
+    position: relative;
+    z-index: 2; /* Un número más alto para que el texto salga delante de la foto */
+    background-color: rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    color: rgb(251, 255, 0);
+    text-align: center;
+}
+
+/* --- EFECTO AL PASAR EL RATÓN (HOVER) --- */
+
+/* He juntado los dos efectos en uno para que no fallen [cite: 23, 40] */
+.caja_servicio:hover {
+    transform: translateY(-10px) scale(1.02); /* Sube un poco y se agranda */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Sombra para que parezca que flota */
+}
+
+/* --- AJUSTES DEL LOGO --- */
+
+.logo {
+    flex: 0 1 auto;
+    max-width: 60px; /* Tamaño controlado para que no se vea gigante [cite: 12] */
+    margin-left: 20px;
+}
+
+.logo img {
+    width: 100%; 
+    height: auto; 
+    display: block;
+}

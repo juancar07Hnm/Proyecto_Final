@@ -1,0 +1,163 @@
+/* ============================================================
+PALETA DE COLORES QUE VOY A USAR:
+- Coral (Principal): #ff7f50 (el de la foto que me gustó)
+- Blanco: #ffffff (para el fondo y letras sobre oscuro)
+- Gris Oscuro: #333333 (para los textos normales)
+   ============================================================ */
+
+/* Aplicamos la fuente moderna a los títulos */
+h1, h2, h3 {
+    font-family: 'Audiowide', cursive;
+}
+
+/* Y una fuente limpia para el resto del texto */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --color-coral: #ff7f50; /* Este es el color naranja/coral de los botones */
+    --pading-container: 50px 0;
+}
+
+/* Esto es para quitar los márgenes que vienen por defecto y que no me den problemas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Lo de siempre para que el tamaño de las cajas cuadre */
+}
+
+/* El contenedor para que la página no se pegue a los bordes y quede centrada */
+.mi_contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* --- CONFIGURACIÓN DEL MENÚ (CABECERA) --- */
+
+/* Pongo el flexbox para que el logo y los enlaces se pongan uno a cada lado */
+.mi_menu {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Para que el logo no se vea gigante y quede bien en la esquina */
+.logo {
+    flex: 0 1 auto;
+    max-width: 80px; /* Aquí ajusto el tamaño del logo */
+    margin-left: 20px;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Los enlaces del menú para que no tengan subrayado y sean blancos */
+.menu_nav a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0 15px;
+    text-transform: uppercase; /* En mayúsculas para que quede más pro */
+    font-size: 14px;
+    transition: 0.3s; /* Para que el cambio de color no sea de golpe */
+}
+
+/* Cuando paso el ratón por encima del menú, cambia al color coral */
+.menu_nav a:hover {
+    color:#cad660;
+}
+
+/* Iconos de redes sociales del final de la cabecera */
+.menu_social a img {
+    width: 24px;
+    margin: 0 10px;
+}
+
+/* --- SECCIÓN DE LA IMAGEN DE FONDO (OFICINA) --- */
+
+/* La caja principal donde va la foto de la oficina */
+.mi_header {
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 800px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Aquí pongo la foto de fondo con el recorte que hicimos en clase */
+.mi_header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* El degradado oscuro para que las letras blancas se lean bien */
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.6) 100%
+    ),
+    url("../img/fondo.jpg"); /* La foto de la oficina que tengo en la carpeta img */
+    
+    background-size: cover;
+    background-position: center;
+    
+    /* El efecto de pico abajo que practicamos en la Actividad 4 */
+    clip-path: polygon(100% 0, 100% 85%, 50% 95%, 0 85%, 0 0);
+    z-index: -1; /* Para que la foto se quede detrás del texto */
+}
+
+/* El texto que sale en mitad de la oficina */
+.header_container {
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* El span para poner mi nombre en color coral */
+.coral {
+    color:#cad660;
+}
+
+/* --- BOTONES Y OTROS DETALLES --- */
+
+/* El botón de "MI TRABAJO" */
+.cta {
+    display: inline-block;
+    background-color:#cad660;
+    color: white;
+    padding: 13px 30px;
+    border-radius: 5px; /* Bordes un poco redondeados como en la Actividad 2 */
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.cta:hover {
+    background-color:#333; /* Un tono un poco más oscuro al pinchar */
+}
+
+/* El pie de página con una línea arriba para separar */
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    font-size: 0.9rem;
+    color: #333;
+}

@@ -1,0 +1,131 @@
+/* --- ESTILO DEL FORMULARIO DE CONTACTO --- */
+
+body {
+    font-family: Arial, sans-serif; /* La fuente normalita que usamos en clase */
+    background-color: #cad660; /* Dejo el fondo blanco para que se vea limpio */
+}
+
+/* Definimos la animación */
+@keyframes aparecerMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu_nav {
+    display: flex; 
+    gap: 25px; /* Separación entre los enlaces del menú [cite: 11] */
+    background-color:#cad660; /* Amarillo de verdad */
+    padding: 10px 20px;
+    border-radius: 8px; /* Bordes un poco redondeados  */
+}
+
+/* Definimos la animación */
+@keyframes aparecerMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu_nav a {
+    text-decoration: none;
+    color: #333; /* Color oscuro para que se lea sobre el amarillo */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    animation: aparecerMenu 1s ease-out forwards;
+    /* Esto hace que los enlaces entren en cascada */
+}
+
+.mi_header_peque {
+    background-color: #333130; /* Fondo oscuro para que el logo blanco se vea */
+    padding: 10px 0;
+}
+
+/* La caja blanca transparente tipo cristal */
+.caja-contacto {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 550px;
+    margin: 0 auto 60px auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra suave para que flote */
+}
+
+.caja-contacto label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Para que los inputs ocupen todo el ancho y se vean limpios */
+.caja-contacto input[type="text"],
+.caja-contacto input[type="email"],
+.caja-contacto select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: white;
+}
+
+/* Estilos para los textos que no son labels (como los de radio/check) */
+.etiqueta-form {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.label-inline {
+    display: inline !important; /* Para que el texto salga al lado del circulito */
+    font-weight: normal !important;
+    margin-left: 5px;
+    margin-right: 15px;
+}
+
+.botones {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Botón de borrar con un estilo más discreto [cite: 66] */
+.btn-borrar {
+    background-color: #f4f4f4;
+    color: #666;
+    border: 1px solid #ddd;
+    padding: 13px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-borrar:hover {
+    background-color: #e0e0e0;
+}
+
+.logo {
+    flex: 0 1 auto;
+    max-width: 60px; /* Tamaño controlado para que no se vea gigante [cite: 12] */
+    margin-left: 20px;
+}
+
+.logo img {
+    width: 100%; 
+    height: auto; 
+    display: block;
+}
