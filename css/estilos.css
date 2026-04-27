@@ -71,7 +71,8 @@ body {
 
 /* Cuando paso el ratón por encima del menú, cambia al color coral */
 .menu_nav a:hover {
-    color:#cad660;
+    color: #ffffff; /* Cambia a blanco o un color de contraste al pasar el ratón [cite: 23] */
+    transform: scale(1.1); /* Un pequeño aumento mejora la interacción con el usuario [cite: 44] */
 }
 
 /* Iconos de redes sociales del final de la cabecera */
@@ -80,7 +81,13 @@ body {
     margin: 0 10px;
 }
 
-/* --- SECCIÓN DE LA IMAGEN DE FONDO (OFICINA) --- */
+/* Color base para los iconos del menú social  */
+.menu_social a {
+    color: #cad660; /* Usa tu color corporativo para mantener la armonía  */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transición suave para nota extra  */
+}
+
 
 /* La caja principal donde va la foto de la oficina */
 .mi_header {
