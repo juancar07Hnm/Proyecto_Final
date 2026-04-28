@@ -1,170 +1,185 @@
-/* ============================================================
-PALETA DE COLORES QUE VOY A USAR:
-- Coral (Principal): #ff7f50 (el de la foto que me gustó)
-- Blanco: #ffffff (para el fondo y letras sobre oscuro)
-- Gris Oscuro: #333333 (para los textos normales)
-   ============================================================ */
+/* --- MIS COLORES Y VARIABLES --- */
 
-/* Aplicamos la fuente moderna a los títulos */
-h1, h2, h3 {
-    font-family: 'Audiowide', cursive;
-}
-
-/* Y una fuente limpia para el resto del texto */
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
+/* Aquí guardo los colores para no volverme loco buscándolos por el código */
 :root {
-    --color-coral: #ff7f50; /* Este es el color naranja/coral de los botones */
-    --pading-container: 50px 0;
+    --color-amarillo: #cad660; /* El amarillo de siempre, el que más uso */
+    --fondo: #0f172a;          /* Color oscuro para el fondo de la web */
+    --gris-texto: #e2e8f0;    /* Gris clarito para que los párrafos se lean bien */
+    --color-borde: rgba(255, 255, 255, 0.1); /* Una línea casi invisible para separar cosas */
+    --color-letras: black;     /* Color negro para cuando el fondo sea claro */
+    --blanco: #ffffff;         /* He añadido el blanco aquí para tenerlo a mano */
 }
 
-/* Esto es para quitar los márgenes que vienen por defecto y que no me den problemas */
+/* --- LIMPIEZA Y ESTILOS GENERALES --- */
+
+/* El reset que nos enseñaron: fuera márgenes y rellenos para empezar de cero */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Lo de siempre para que el tamaño de las cajas cuadre */
+    box-sizing: border-box; /* Para que el ancho de la caja no se rompa con el borde */
 }
 
-/* El contenedor para que la página no se pegue a los bordes y quede centrada */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--fondo);
+    color: var(--gris-texto);
+    line-height: 1.6; /* Un poco de aire para que las letras no estén pegadas */
+}
+
+/* El contenedor para que el diseño no se pegue a los bordes del monitor */
 .mi_contenedor {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    overflow: hidden;
 }
 
-/* --- CONFIGURACIÓN DEL MENÚ (CABECERA) --- */
+/* --- PARTE DE ARRIBA (HEADER) --- */
 
-/* Pongo el flexbox para que el logo y los enlaces se pongan uno a cada lado */
-.mi_menu {
-    display: flex;
-    flex-flow: row nowrap;
-    height: 100px;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Para que el logo no se vea gigante y quede bien en la esquina */
-.logo {
-    flex: 0 1 auto;
-    max-width: 80px; /* Aquí ajusto el tamaño del logo */
-    margin-left: 20px;
-}
-
-.logo img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Los enlaces del menú para que no tengan subrayado y sean blancos */
-.menu_nav a {
-    text-decoration: none;
-    color: #ffffff;
-    padding: 0 15px;
-    text-transform: uppercase; /* En mayúsculas para que quede más pro */
-    font-size: 14px;
-    transition: 0.3s; /* Para que el cambio de color no sea de golpe */
-}
-
-/* Cuando paso el ratón por encima del menú, cambia al color coral */
-.menu_nav a:hover {
-    color: #ffffff; /* Cambia a blanco o un color de contraste al pasar el ratón [cite: 23] */
-    transform: scale(1.1); /* Un pequeño aumento mejora la interacción con el usuario [cite: 44] */
-}
-
-/* Iconos de redes sociales del final de la cabecera */
-.menu_social a img {
-    width: 24px;
-    margin: 0 10px;
-}
-
-/* Color base para los iconos del menú social  */
-.menu_social a {
-    color: #cad660; /* Usa tu color corporativo para mantener la armonía  */
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease; /* Transición suave para nota extra  */
-}
-
-
-/* La caja principal donde va la foto de la oficina */
+/* La cabecera ocupa toda la pantalla del usuario (100vh) */
 .mi_header {
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    max-height: 800px;
     position: relative;
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Si la foto es gigante, que no me salga el scroll lateral */
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%); /* Esto hace el efecto de recorte en diagonal */
 }
 
-/* Aquí pongo la foto de fondo con el recorte que hicimos en clase */
-.mi_header::before {
-    content: "";
-    position: absolute;
+/* TRUCO: Uso una etiqueta <img> pero hago que se porte como un fondo de pantalla */
+.fondo_estudiante {
+    position: absolute; /* La saco del flujo y la mando al fondo */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* El degradado oscuro para que las letras blancas se lean bien */
-    background-image: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.3) 0%,
-        rgba(0, 0, 0, 0.6) 100%
-    ),
-    url("../img/fondo.jpg"); /* La foto de la oficina que tengo en la carpeta img */
-    
-    background-size: cover;
-    background-position: center;
-    
-    /* El efecto de pico abajo que practicamos en la Actividad 4 */
-    clip-path: polygon(100% 0, 100% 85%, 50% 95%, 0 85%, 0 0);
-    z-index: -1; /* Para que la foto se quede detrás del texto */
+    object-fit: cover; /* Para que la imagen no se estire ni se vea "aplastada" */
+    z-index: -1;       /* Fundamental para que se quede detrás del texto */
+    filter: brightness(0.4); /* La oscurezco un poco para que las letras blancas resalten */
 }
 
-/* El texto que sale en mitad de la oficina */
-.header_container {
-    height: 75%;
+/* Esto asegura que el menú y el título floten por encima de la foto */
+.contenido_encima {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- EL MENÚ DE NAVEGACIÓN --- */
+
+/* Uso Flexbox para que el logo se vaya a un lado y los enlaces al otro */
+.mi_menu {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    color: white;
-    text-align: center;
+    height: 80px;
+    border-bottom: 1px solid var(--color-borde); /* Una rayita sutil abajo */
+    animation: aparecerMenu 0.8s ease-out; /* Animación para que el menú baje al cargar la página */
 }
 
-/* El span para poner mi nombre en color coral */
-.coral {
-    color:#cad660;
+.logo img {
+    max-width: 60px;
 }
 
-/* --- BOTONES Y OTROS DETALLES --- */
-
-/* El botón de "MI TRABAJO" */
-.cta {
-    display: inline-block;
-    background-color:#cad660;
-    color: white;
-    padding: 13px 30px;
-    border-radius: 5px; /* Bordes un poco redondeados como en la Actividad 2 */
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 20px;
+.menu_nav a {
+    text-decoration: none; /* Quito el subrayado de los enlaces */
+    color: var(--blanco);
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: uppercase; /* Todo en mayúsculas para que quede más pro */
     transition: 0.3s;
 }
 
-.cta:hover {
-    background-color:#333; /* Un tono un poco más oscuro al pinchar */
+.menu_nav a:hover {
+    color: var(--color-amarillo); /* El enlace cambia a amarillo cuando pasas el ratón */
 }
 
-/* El pie de página con una línea arriba para separar */
+/* --- TÍTULO Y BOTÓN PRINCIPAL --- */
+
+/* Centramos el contenido restando lo que mide el menú (80px) */
+.header_container {
+    height: calc(100vh - 80px); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header_titulo {
+    font-family: 'Audiowide', cursive; /* Fuente futurista para el título principal */
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+/* Para resaltar palabras sueltas en amarillo */
+.info {
+    color: var(--color-amarillo);
+}
+
+/* El botón le damos forma */
+.servicios {
+    display: inline-block;
+    padding: 12px 30px;
+    margin-top: 40px;
+    border: 2px solid var(--color-amarillo); 
+    color: var(--color-amarillo);
+    text-decoration: none;
+    border-radius: 30px; /* Bordes a tope de redondeados */
+    transition: 0.4s;
+}
+
+.servicios:hover {
+    background: var(--color-amarillo);
+    color: var(--color-letras); /* Al tocarlo, el fondo se vuelve amarillo y la letra negra */
+}
+
+/* --- DECORACIÓN Y SECCIONES --- */
+
+/* Espacio para la intro de abajo */
+.seccion_intro {
+    padding: 50px 0;
+}
+
+/* Una rayita amarilla corta para decorar debajo del título */
+.linea_verde {
+    border: none;
+    height: 4px;
+    width: 60px;
+    background-color: var(--color-amarillo);
+    margin-bottom: 20px;
+}
+
+/* --- ANIMACIONES Y FOOTER --- */
+
+/* Esta animación hace que el menú aparezca bajando un poquito desde arriba */
+@keyframes aparecerMenu {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* El cierre de la página centrado y con color de marca */
 footer {
     text-align: center;
-    padding: 20px;
-    border-top: 1px solid #ccc;
-    font-size: 0.9rem;
-    color: #333;
+    padding: 30px;
+    background-color: var(--fondo); /* Mantén el fondo oscuro para coherencia */
+    border-top: 1px solid var(--color-borde);
+    color: var(--color-amarillo);
+}
+
+.footer_social {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer_social img {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s;
+}
+
+.footer_social img:hover {
+    transform: scale(1.2);
 }

@@ -1,31 +1,52 @@
-/* --- ESTILO DEL FORMULARIO DE CONTACTO --- */
-
-body {
-    font-family: Arial, sans-serif; /* La fuente normalita que usamos en clase */
-    background-color: #cad660; /* Dejo el fondo blanco para que se vea limpio */
+/* Aquí guardo todos los colores que voy a usar para no andar buscándolos luego */
+:root {
+    --color-amarillo: #cad660;   /* El amarillo que usamos siempre */
+    --color-negro: #0f172a;      /* El azul oscuro casi negro para el texto y cabeceras */
+    --color-negro-capa: rgba(0, 0, 0, 0.5); 
+    --color-blanco-cristal: rgba(255, 255, 255, 0.85); /* Blanco transparente para el efecto cristal */
+    --color-borde-suave: rgba(0, 0, 0, 0.1);           /* Un borde que casi no se nota */
+    --color-gris-borde: #ccc;     /* El gris típico para los bordes de los inputs */
+    --color-boton-borrar: #f4f4f4; /* Gris clarito para el botón de borrar */
+    --color-texto-borrar: #666;    /* Gris oscuro para que se lea el texto del botón */
+    --color-borde-borrar: #ddd;    /* El borde del botón de borrar */
+    --color-hover-borrar: #e0e0e0; /* Color para cuando pasas el ratón por el botón */
 }
 
-/* Definimos la animación */
-@keyframes aparecerMenu {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* --- ESTILOS GENERALES --- */
+
+body {
+    font-family: Arial, sans-serif; /* La fuente normalita */
+    background-color: var(--color-amarillo); /* Le pongo el fondo amarillo */
+}
+
+/* --- MENÚ Y NAVEGACIÓN --- */
+
+.mi_menu {
+    display: flex;
+    justify-content: space-between; /* Truco para que el logo y las redes se vayan a las esquinas */
+    align-items: center;
+    height: 80px;
+}
+
+.menu_social img {
+    width: 22px; /* Fotos de redes sociales pequeñitas */
+    height: 22px;
+}
+
+.menu_social {
+    display: flex;
+    gap: 15px; /* Separación entre los iconos de las redes */
 }
 
 .menu_nav {
     display: flex; 
-    gap: 25px; /* Separación entre los enlaces del menú [cite: 11] */
-    background-color:#cad660; /* Amarillo de verdad */
+    gap: 25px; /* Espacio entre los enlaces del menú */
+    background-color: var(--color-amarillo); 
     padding: 10px 20px;
-    border-radius: 8px; /* Bordes un poco redondeados  */
+    border-radius: 8px; /* Bordes un poco redondeados para que quede mejor */
 }
 
-/* Definimos la animación */
+/* Animación para que el menú aparezca bajando */
 @keyframes aparecerMenu {
     from {
         opacity: 0;
@@ -38,29 +59,30 @@ body {
 }
 
 .menu_nav a {
-    text-decoration: none;
-    color: #333; /* Color oscuro para que se lea sobre el amarillo */
+    text-decoration: none; /* Quito el subrayado de los enlaces */
+    color: var(--color-negro); 
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: uppercase; /* Todo en mayúsculas para que resalte */
     transition: 0.3s;
     animation: aparecerMenu 1s ease-out forwards;
-    /* Esto hace que los enlaces entren en cascada */
 }
 
 .mi_header_peque {
-    background-color: #333130; /* Fondo oscuro para que el logo blanco se vea */
+    background-color: var(--color-negro); /* Fondo oscuro para que el logo se vea pro */
     padding: 10px 0;
 }
 
-/* La caja blanca transparente tipo cristal */
+/* --- FORMULARIO DE CONTACTO --- */
+
+/* La caja blanca que parece un cristal */
 .caja-contacto {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: var(--color-blanco-cristal);
     padding: 40px;
     border-radius: 15px;
     max-width: 550px;
-    margin: 0 auto 60px auto;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra suave para que flote */
+    margin: 0 auto 60px auto; /* Centrada y con espacio abajo */
+    border: 1px solid var(--color-borde-suave);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombrita para que parezca que flota */
 }
 
 .caja-contacto label {
@@ -70,26 +92,26 @@ body {
     font-size: 0.9rem;
 }
 
-/* Para que los inputs ocupen todo el ancho y se vean limpios */
+/* Para que los cuadros de texto ocupen todo el ancho de la caja */
 .caja-contacto input[type="text"],
 .caja-contacto input[type="email"],
 .caja-contacto select {
     width: 100%;
     padding: 12px;
     margin-top: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-gris-borde);
     border-radius: 6px;
     background-color: white;
 }
 
-/* Estilos para los textos que no son labels (como los de radio/check) */
+/* Estilos para los textos de radio y checkbox */
 .etiqueta-form {
     margin-top: 20px;
     font-weight: bold;
 }
 
 .label-inline {
-    display: inline !important; /* Para que el texto salga al lado del circulito */
+    display: inline !important; /* Para que el texto salga al lado del circulito y no debajo */
     font-weight: normal !important;
     margin-left: 5px;
     margin-right: 15px;
@@ -101,11 +123,11 @@ body {
     justify-content: center;
 }
 
-/* Botón de borrar con un estilo más discreto [cite: 66] */
+/* Botón de borrar con un estilo gris para que no destaque tanto */
 .btn-borrar {
-    background-color: #f4f4f4;
-    color: #666;
-    border: 1px solid #ddd;
+    background-color: var(--color-boton-borrar);
+    color: var(--color-texto-borrar);
+    border: 1px solid var(--color-borde-borrar);
     padding: 13px 25px;
     border-radius: 5px;
     cursor: pointer;
@@ -115,12 +137,14 @@ body {
 }
 
 .btn-borrar:hover {
-    background-color: #e0e0e0;
+    background-color: var(--color-hover-borrar); /* Se oscurece un poco al pasar el ratón */
 }
+
+/* --- AJUSTES DEL LOGO --- */
 
 .logo {
     flex: 0 1 auto;
-    max-width: 60px; /* Tamaño controlado para que no se vea gigante [cite: 12] */
+    max-width: 60px;
     margin-left: 20px;
 }
 
@@ -128,4 +152,29 @@ body {
     width: 100%; 
     height: auto; 
     display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--color-negro); /* Mantén el fondo oscuro para coherencia */
+    border-top: 1px solid var(--color-boton-borrar);
+    color: var(--color-amarillo);
+}
+
+.footer_social {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer_social img {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s;
+}
+
+.footer_social img:hover {
+    transform: scale(1.2);
 }

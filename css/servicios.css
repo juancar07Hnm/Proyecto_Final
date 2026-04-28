@@ -1,22 +1,89 @@
+/* --- MIS VARIABLES --- */
+
+/* Aquí guardo los colores para no andar buscándolos y que todo me pegue */
 :root {
-    --color-amarillo: #cad660; /* Definimos el amarillo como una variable para usarla en todo el CSS */
-    --color-negro: #333;
-    --color-negro-capa: rgba(0, 0, 0, 0.5);
+    --color-amarillo: #cad660; /* El amarillo de siempre para que todo sea igual */
+    --color-negro: #0f172a;      /* El color oscuro para que contraste */
+    --color-negro-capa: rgba(0, 0, 0, 0.5); /* El negro transparente para las fotos */
+    --color-borde-suave: rgba(255, 255, 255, 0.1); /* La rayita del footer que casi no se ve */
 }
 
+/* --- ESTILOS GENERALES --- */
+
 body {
-    font-family: Arial, sans-serif; /* La fuente normalita que usamos en clase */
+    font-family: Arial, sans-serif; /* La fuente normalita que nos piden en clase */
+    background-color: var(--color-amarillo); /* El color de fondo para que no quede blanco */
+}
+
+/* --- EL MENÚ --- */
+
+.mi_menu {
+    display: flex;
+    justify-content: space-between; /* Esto empuja el logo a un lado y las redes al otro */
+    align-items: center;
+    height: 80px;
+}
+
+.menu_social img {
+    width: 22px; /* Tamaño de los iconos de redes para que no se vean gigantes */
+    height: 22px;
+}
+
+.menu_social {
+    display: flex;
+    gap: 15px; /* Espacio para que los iconos no estén pegados */
 }
 
 .menu_nav {
     display: flex; 
-    gap: 25px; /* Separación entre los enlaces del menú [cite: 11] */
-    background-color: var(--color-amarillo); /* Amarillo de verdad */
+    gap: 25px; /* Separación entre los botones del menú */
+    background-color: var(--color-amarillo); 
     padding: 10px 20px;
-    border-radius: 8px; /* Bordes un poco redondeados  */
+    border-radius: 8px; /* Redondeamos las esquinas para que quede mejor */
 }
 
-/* Definimos la animación */
+.menu_nav a {
+    text-decoration: none; /* Quitamos el subrayado de los enlaces */
+    color: var(--color-negro); 
+    font-weight: bold;
+    text-transform: uppercase; /* Todo en mayúsculas para que destaque */
+    transition: 0.3s;
+    animation: aparecerMenu 1s ease-out forwards; /* La animación de entrada */
+}
+
+/* --- CABECERAS SECUNDARIAS --- */
+
+.mi_header_peque {
+    background-color: var(--color-negro); /* Fondo oscuro para resaltar el logo */
+    padding: 10px 0;
+}
+
+/* --- REJILLA DE SERVICIOS (GRID) --- */
+
+.grid_servicios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales, como el ejercicio de clase */
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+/* --- LOGO --- */
+
+.logo {
+    flex: 0 1 auto;
+    max-width: 60px;  
+    margin-left: 20px;
+}
+
+.logo img {
+    width: 100%; 
+    height: auto; 
+    display: block;
+}
+
+/* --- ANIMACIÓN DEL MENÚ --- */
+
+/* Esto hace que el menú aparezca bajando un poquito */
 @keyframes aparecerMenu {
     from {
         opacity: 0;
@@ -28,63 +95,39 @@ body {
     }
 }
 
-.menu_nav a {
-    text-decoration: none;
-    color: var(--color-negro); /* Color oscuro para que se lea sobre el amarillo */
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: 0.3s;
-    animation: aparecerMenu 1s ease-out forwards;
-    /* Esto hace que los enlaces entren en cascada */
-}
-
-/* --- CABECERA DE PÁGINAS SECUNDARIAS --- */
-
-.mi_header_peque {
-    background-color: var(--color-negro); /* Fondo oscuro para que el logo blanco se vea */
-    padding: 10px 0;
-}
-
-.grid_servicios {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales como vimos en clase  */
-    gap: 20px;
-    margin-bottom: 50px;
-}
-
 /* --- ESTILO DE LAS TARJETAS --- */
 
 .caja_servicio {
-    height: 380px; /* Un poco más de altura para que quepan las fotos */
+    height: 380px; /* Altura para que quepan bien las fotos y el texto */
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
-    transition: 0.3s; /* Para que los efectos sean suaves  */
+    overflow: hidden; /* Para que la foto no se salga del borde redondeado */
+    transition: 0.3s;
 }
 
 .tarjeta-fondo {
-    position: relative; /* Necesario para que la imagen no se escape de la tarjeta */
+    position: relative; /* Para que la foto no se vaya de la caja */
     border: none;
 }
 
-/* Esto es lo que hace que la imagen del HTML se porte como un fondo */
+/* La foto se estira y se va al fondo de la tarjeta */
 .foto-fondo {
-    position: absolute; /* La fijamos a la tarjeta */
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Hace que la imagen grande se adapte sin deformarse */
-    z-index: 1; /* La ponemos al fondo */
+    object-fit: cover; /* Para que la foto no se estire y se vea mal */
+    z-index: 1; /* Al fondo del todo */
 }
 
-/* La capa oscura ahora tiene que estar por encima de la foto */
+/* Capa negra encima de la foto para que el texto se lea bien */
 .capa-oscura {
     position: relative;
-    z-index: 2; /* Un número más alto para que el texto salga delante de la foto */
+    z-index: 2; /* Por encima de la foto (que es z-index 1) */
     background-color: var(--color-negro-capa);
     width: 100%;
     height: 100%;
@@ -96,24 +139,37 @@ body {
     text-align: center;
 }
 
-/* --- EFECTO AL PASAR EL RATÓN (HOVER) --- */
+/* --- EFECTO HOVER --- */
 
-/* He juntado los dos efectos en uno para que no fallen */
+/* Al pasar el ratón, la tarjeta sube y se agranda un pelín */
 .caja_servicio:hover {
-    transform: translateY(-10px) scale(1.02); /* Sube un poco y se agranda */
-    box-shadow: 0 10px 20px var(--color-negro-capa); /* Sombra para que parezca que flota */
+    transform: translateY(-10px) scale(1.02); 
+    box-shadow: 0 10px 20px var(--color-negro-capa); /* Sombrita para dar volumen */
 }
 
-/* --- AJUSTES DEL LOGO --- */
+/* --- FINAL DE PÁGINA --- */
 
-.logo {
-    flex: 0 1 auto;
-    max-width: 60px; /* Tamaño controlado para que no se vea gigante */
-    margin-left: 20px;
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--color-negro); /* Mantén el fondo oscuro para coherencia */
+    border-top: 1px solid var(--color-borde-suave);
+    color: var(--color-amarillo);
 }
 
-.logo img {
-    width: 100%; 
-    height: auto; 
-    display: block;
+.footer_social {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer_social img {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s;
+}
+
+.footer_social img:hover {
+    transform: scale(1.2);
 }
