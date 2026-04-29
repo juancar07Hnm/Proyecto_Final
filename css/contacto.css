@@ -95,6 +95,7 @@ body {
 /* Para que los cuadros de texto ocupen todo el ancho de la caja */
 .caja-contacto input[type="text"],
 .caja-contacto input[type="email"],
+
 .caja-contacto select {
     width: 100%;
     padding: 12px;
@@ -154,11 +155,28 @@ body {
     display: block;
 }
 
+@media (max-width: 600px) {
+    .caja-contacto {
+        width: 95%;
+        padding: 25px 15px;
+    }
+
+    .botones {
+        flex-direction: column; /* Botones uno encima de otro */
+        gap: 15px;
+    }
+
+    .btn-borrar, .cta {
+        width: 100%;
+        margin: 0;
+    }
+}
+
 footer {
     text-align: center;
     padding: 30px;
-    background-color: var(--color-negro); /* Mantén el fondo oscuro para coherencia */
-    border-top: 1px solid var(--color-boton-borrar);
+    background-color: var(--color-negro); /* fondo oscuro */
+    border-top: 1px solid var(--color-gris-borde);
     color: var(--color-amarillo);
 }
 
